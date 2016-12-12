@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Declarative UI. Relay is the way?</title>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Shower Theme -->
+    <link rel="stylesheet" href="vendors/shower-ribbon/styles/screen-16x10.css"/>
+    <link rel="stylesheet" href="vendors/shower-warsawjs/styles/main.css"/>
+
+    <!-- Prism.js -->
+    <link rel="stylesheet" href="vendors/prism/prism.css"/>
+    <link rel="stylesheet" href="vendors/prism/custom-prism.css"/>
+    <style type="text/css">
+        .wrap {
+            width:100%;
+            margin:0 auto;
+            height: 70%;
+        }
+        .left_col {
+            float:left;
+            width:50%;
+            height: 100%;
+        }
+        .right_col {
+            float:right;
+            width:50%;
+            height: 100%;
+        }
+        .no_border {
+            border: none;
+            padding-left: 20px;
+        }
+        .slide .shout {
+            font-size: 140px;
+        }
+        .lang-logo {
+            max-width: 200px;
+        }
+        .focus {
+            font-weight: bolder;
+        }
+        .slide {
+            background-color: #db9900;
+        }
+        .slide .shout {
+            font-size: 72px;
+            font-weight: bold;
+        }
+        :not(pre) > code[class*="language-"], pre[class*="language-"] {
+            background: #f5f2f0;
+            border: solid;
+        }
+        .slide b, .slide strong {
+            color: #bd1110;
+        }
+        .slide p.note {
+            color: #12335f;
+        }
+        .slide h2 {
+            color: #bd1110;
+            font-weight: bold;
+            font-family: firalight, sans-serif;
+        }
+    </style>
+</head>
+<body class="shower list">
+    <header class="caption">
+        <h1>Declarative UI. Relay is the way?</h1>
+        <p>We talk about JavaScript. Each month in Warsaw, Poland.</p>
+    </header>
+
+    <!-- SLIDE #1 -->
+    <section class="slide front-page">
+        <div class="logo">
+            <!-- Logo WarsawJS -->
+            <img src="pictures/logo/warsawjs-logo-light.png">
+        </div>
+        <div class="details">
+            <!-- 1. Avatar -->
+            <img src="pictures/avatar.jpg" alt="Speaker"/>
+
+            <!-- 2. Speaker -->
+            <h2>Kamil Grabek</h2>
+
+            <!-- 3. Presentation title -->
+            <h2><strong>"Declarative UI. Relay is the way?"</strong></h2>
+
+            <!-- 4. Presentation date -->
+            <h2>2016-12-14</h2>
+
+            <!-- 5. Contact the speaker -->
+            <h2>kamil.grabek@gmail.com</h2>
+        </div>
+    </section>
+
+    <!-- SLIDE #2 -->
+    <section class="slide" itemscope itemtype="http://schema.org/Person" style="font-weight: bold;">
+        <div>
+            <h2>Who am I?</h2>
+
+            <h3 itemprop="jobTitle">Front-end developer</h3>
+
+            <p itemscope itemtype="https://schema.org/Organization">
+                <span itemprop="name">Bluesoft</span>,
+                <span itemprop="location">Warsaw</span>
+            </p>
+
+            <p>
+                <span itemprop="knows">Tech freak, sci-fi lover, astro maniac.</span><br/>
+            </p>
+
+            <div class="wrap">
+                <div class="left_col">
+                    <p class="note">"Kiedy życie zaskoczy,<br />pytam co ma dla mnie jeszcze"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #3 -->
+    <section class="slide prism">
+        <h2 class="shout">
+            <div style="font-size: 100px;margin-bottom: 60px;">DECLARATIVE UI</div>
+            <div style="margin-top: -50px">
+                <img style="width: 250px;height: 400px;padding-bottom: 150px;" src="pictures/logo/react.png">
+                <img style="width: 400px; height: 400px" src="pictures/logo/relay.png">
+                <img style="width: 250px; height: 250px" src="pictures/logo/graphql.png">
+            </div>
+             <div style="font-size: 72px;margin-top: -50px;">Relay is the way?</div>
+        </h2>
+    </section>
+
+    <!-- SLIDE #4 -->
+    <section class="slide">
+        <h2 style="display: none;">Declarative UI?</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%">
+                <img style="width: 300px; height: 300px" src="pictures/what-is.png">
+                <b style="font-size: 47px;margin-left: -33px;">DECLARATIVE UI?</b>
+            </div>
+            <div class="right_col" style="width: 55%">
+                <ul style="margin-top: 50px;font-size: 35px;font-weight: bold;">
+                    <li class="next">TELL ME WHAT YOU WANT</li>
+                    <li class="next">...I'LL TRY TO DO IT</li>
+                    <br />
+                    <li class="next">VIEW KNOW WHAT NEEDS</li>
+                    <li class="next">DEFINES HOW UI LOOKS</li>
+                    <li class="next">CAN DESCRIBE DATA SHAPE</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #5 -->
+    <section class="slide">
+        <h2 style="display: none;">Imperative UI</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%">
+                <img style="width: 300px; height: 300px" src="pictures/darth-vader.png">
+                <b style="font-size: 47px;">IMPERATIVE UI</b>
+            </div>
+            <div class="right_col" style="width: 55%">
+                <ul style="font-size: 35px;font-weight: bold;">
+                    <li class="next">TELL ME WHAT TO TODO</li>
+                    <li class="next">...STEP BY STEP</li>
+                    <br />
+                    <li class="next">SERVER DEFINES DATA SHAPE FOR VIEW</li>
+                    <li class="next">VIEW DOESN'T KNOW HOW UI LOOKS LIKE</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #6 -->
+    <section class="slide" style="padding: 20px;">
+        <h2 style="display: none;">Example app screen</h2>
+        <img style="width: 800px; height: 600px;margin-left: 85px;" src="pictures/screen-shot.PNG">
+    </section>
+
+    <!-- SLIDE #7 -->
+    <section class="slide">
+        <h2 style="display: none;">Not so long time ago...</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 35%">
+                <ul class="next" style="font-size: 35px;margin-top: 20px;">
+                    <li>MVC</li>
+                    <li>MVP</li>
+                    <li>MVVM</li>
+                    <li>MV...</li>
+                    <li>MV...<b style="color: #000000;">WHATEVER</b></li>
+                </ul>
+            </div>
+            <div class="right_col" style="width: 65%">
+                <img style="width: 300px; height: 300px" src="pictures/man-sitting-in-the-bathroom.png">
+                <div>
+                    <b style="font-size: 47px;margin-top: 20px;">NOT SO LONG TIME AGO...</b>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #8 -->
+    <section class="slide" style="padding: 10px;">
+        <h2 style="display: none;">MVW data flow</h2>
+        <img style="width: 960px; height: 600px" src="pictures/mvv-data-flow.png">
+    </section>
+
+      <!-- SLIDE #9 -->
+    <section class="slide" style="padding-top: 10px;">
+        <h2 style="display: none;">Underscore template</h2>
+        <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;">
+                // EXAMPLE UNDERSCORE TEMPLATE PART I
+                &lt;div&gt;
+                  &lt;% _.each(categories, function(category) { %&gt;
+                    &lt;div&gt;
+                      &lt;h2&gt;&lt;%= category.name %&gt;&lt;/h2&gt;
+                      &lt;h4&gt;&lt;%= category.description %&gt;&lt;/h4&gt;
+                      &lt;div&gt;
+                        &lt;% _.each(category.events.edges, function(event) { %&gt;
+                          // ...
+            </code>
+        </pre>
+    </section>
+
+      <!-- SLIDE #10 -->
+    <section class="slide" style="padding-top: 10px;">
+        <h2 style="display: none;">Underscore template</h2>
+        <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;">
+                // EXAMPLE UNDERSCORE TEMPLATE PART II
+                            // ...
+                            &lt;h3&gt;&lt;%= event.node.name %&gt;&lt;/h3&gt;
+                            &lt;div&gt;&lt;%= event.node.description %&gt;&lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;% }) %&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;% }) %&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
+    </section>
+
+    <!-- SLIDE #11 -->
+    <section class="slide" style="padding-top: 10px;">
+        <h2 style="display: none;">MVW App</h2>
+        <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;">
+                // MVW EXAMPLE APP
+              const DATA = {/* WHATEVER source data*/};
+              const View = Backbone.View.extend({
+                template: _.template(TEMPLATE),
+                render: function () {
+                  this.$el.html( this.template(this.model.toJSON()));
+                  return this;
+                }
+              });
+              const view = new View({ model: new Backbone.Model(DATA) });
+              view.render();
+              $('#root').html(view.el);
+            </code>
+        </pre>
+    </section>
+
+    <!-- SLIDE #12 -->
+    <section class="slide">
+        <h2 style="display: none;">MVW example app</h2>
+        <div style="text-align: center; font-size: 100px"><a style="color:#000;" href="http://g3f4.xyz:30001/">MVW EXAMPLE APP</a></div>
+    </section>
+
+    <!-- SLIDE #13 -->
+    <section class="slide">
+        <h2 style="display: none;">Is there a better way?</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%">
+                <img style="width: 300px;height: 300px" src="pictures/question-mark.png">
+            </div>
+            <div class="right_col" style="width: 55%">
+                <div style="font-size: 72px;font-weight: bold;margin-top: 50px;">IS THERE A BETTER WAY?</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #14 -->
+    <section class="slide">
+        <h2 style="display: none;">React!</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%">
+                <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/logo/react.png">
+            </div>
+            <div class="right_col" style="width: 55%;margin-top: -100px;">
+                <div style="font-size: 112px;"><b>REACT!</b></div>
+                <ul class="next" style="font-size: 35px;font-weight: bold;">
+                    <li>VIEW LIBRARY</li>
+                    <li>VIRTUAL DOM</li>
+                    <li>COMPONENTS BASED</li>
+                    <li>HIERARCHY ORDER</li>
+                    <li>LIFE CYCLES AND MORE ...</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #15 -->
+    <section class="slide" style="padding: 0 0 0 80px;">
+        <h2 style="display: none;">React data flow</h2>
+        <img style="width: 640px; height: 480px;zoom: 1.3;" src="pictures/react-data-flow-v3.png">
+    </section>
+
+
+    <!-- SLIDE #16 -->
+    <section class="slide" style="padding: 10px">
+        <h2 style="display: none;">Components</h2>
+        <pre style="font-size: 24px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;line-height: 28px;">
+                // components.js
+                class Category extends React.Component {
+                  render() {
+                    return &lt;div&gt;
+                      &lt;h2&gt;{this.props.category.name}&lt;/h2&gt;
+                      &lt;h4&gt;{this.props.category.description}&lt;/h4&gt;
+                      {this.props.category.events.edges.map(({ node }) =&gt;
+                        &lt;Event key={node.id} event={node} /&gt;
+                      )}
+                    &lt;/div&gt;;
+                  }
+                }
+                class Event extends React.Component {
+                  render() {
+                    return &lt;div&gt;
+                      &lt;h2&gt;{this.props.event.name}&lt;/h2&gt;
+                      &lt;h4&gt;{this.props.event.description}&lt;/h4&gt;
+                    &lt;/div&gt;;
+                  }
+                }
+            </code>
+        </pre>
+    </section>
+
+
+    <!-- SLIDE #17 -->
+    <section class="slide" style="padding: 10px">
+        <h2 style="display: none;">JSX template rendered</h2>
+        <pre style="font-size: 24px;width: 100%;" class="language-javascript">
+            <code style="width: 100%;line-height: 28px;">
+                // App.js
+                import React from 'react-dom'
+                import ReactDOM from 'react'
+                const DATA = {/* WHATEVER source data*/};
+                class App extends React.Component {
+                  render() {
+                    return &lt;div&gt;
+                      {this.props.data.categories.map(category =&gt;
+                        &lt;Category key={category.id} category={category}/&gt;
+                      )}
+                    &lt;/div&gt;;
+                  }
+                }
+                ReactDOM.render(
+                  &lt;App data={DATA} /&gt;,
+                  document.getElementById('root')
+                );
+            </code>
+        </pre>
+    </section>
+
+    <!-- SLIDE #18 -->
+    <section class="slide">
+        <h2 style="display: none;">React example app</h2>
+        <div style="text-align: center; font-size: 100px"><a style="color:#000;" href="http://g3f4.xyz:30002/">REACT EXAMPLE APP</a></div>
+    </section>
+
+    <!-- SLIDE #19 -->
+    <section class="slide">
+        <h2 style="display: none;">Can we do more?</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 45%">
+                <img style="width: 300px;height: 300px" src="pictures/question-mark.png">
+            </div>
+            <div class="right_col" style="width: 55%">
+                <div style="font-size: 72px;font-weight: bold;margin-top: 50px;">CAN WE DO MORE?</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #20 -->
+    <section class="slide" style="width: 1075px;">
+        <h2 style="display: none;">Relay time!</h2>
+        <div class="wrap">
+            <div class="left_col" style="width: 40%">
+                <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/logo/relay.png">
+            </div>
+            <div class="right_col" style="width: 60%;margin-top: -100px;">
+                <div style="font-size: 72px;"><b>RELAY TIME!</b></div>
+                <ul class="next" style="font-size: 35px;font-weight: bold;">
+                    <li>FRAMEWORK, DATA LAYER</li>
+                    <li>HIGHER ORDER COMPONENTS</li>
+                    <li>HIERARCHICAL CONTAINERS</li>
+                    <li>SINGLE STORE, CACHE, UNIDIRECTIONAL DATA FLOW</li>
+                    <li>MUTATIONS, OPTIMISTIC UPDATES AND MORE ...</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #21 -->
+    <section class="slide" style="padding: 0 0 0 80px;">
+        <h2 style="display: none;">Relay data flow</h2>
+        <img style="width: 640px; height: 480px;zoom: 1.3;" src="pictures/relay-data-flow-v3.png">
+    </section>
+
+    <!-- SLIDE #22 -->
+    <section class="slide" style="padding-top: 20px;">
+        <div class="wrap" style="margin-top: 50px;">
+            <div class="left_col" style="width: 35%">
+                <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/road-sign.png">
+                <h2>Relay.Route</h2>
+            </div>
+            <div class="right_col" style="width: 65%; margin-top: 100px">
+                <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;line-height: 22px;">
+                        import Relay from 'react-relay';
+
+                        export default class extends Relay.Route {
+                          static queries = {
+                            data: () => Relay.QL`query { app }`
+                          };
+                          static routeName = 'AppRoute';
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #23 -->
+    <section class="slide" style="padding: 20px;">
+        <div class="wrap" style="margin-top: 30px">
+            <div class="left_col" style="width: 40%">
+                <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/box.png">
+                <h2>Relay.Container</h2>
+            </div>
+            <div class="right_col" style="width: 60%;margin-top: -40px;">
+                <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;line-height: 30px;">
+                    Category = Relay.createContainer(Category, {
+                      fragments: {
+                        category: () => Relay.QL`
+                          fragment on Category {
+                            name
+                            description
+                            events(first: 10) {
+                              edges {
+                                node {
+                                  id
+                                  ${Event.getFragment('event')}
+                                }
+                              }
+                            }
+                          }
+                        `
+                       },
+                    });
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #24 -->
+    <section class="slide" style="padding: 20px;">
+        <div class="wrap" style="margin-top: 30px">
+            <div class="left_col" style="width: 40%">
+                <img style="width: 300px;height: 300px;margin-top: 40px;" src="pictures/box.png">
+                <h2>Relay.Container</h2>
+            </div>
+            <div class="right_col" style="width: 60%;margin-top: -40px;">
+                <pre style="font-size: 22px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;line-height: 30px;">
+                        Event = Relay.createContainer(Event, {
+                          fragments: {
+                            event: () => Relay.QL`
+                              fragment on Event {
+                                name
+                                description
+                              }`}
+                        });
+                        export default Relay.createContainer(App, {
+                          fragments: {
+                            data: () => Relay.QL`
+                              fragment on App {
+                                id,
+                                categories(names: ["IT", ...]) {
+                                  id
+                                  ${Category.getFragment('category')}
+                                }
+                              }`}
+                        });
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #25 -->
+    <section class="slide">
+        <h2 style="display: none;">Relay example app</h2>
+        <div style="text-align: center; font-size: 100px"><a style="color:#000;" href="http://g3f4.xyz:30003/">RELAY EXAMPLE APP</a></div>
+    </section>
+
+    <!-- SLIDE #26 -->
+    <section class="slide prism">
+        <h2 style="font-size: 56px; font-weight: bold;">MORE TO DISCOVER IN RELAY</h2>
+        <ul class="next" style="font-size: 35px;font-weight: bold;">
+            <li>MUTATIONS AND OPTIMISTIC UPDATES</li>
+            <li>CACHING, BATCHING</li>
+            <li>WORKING OFFLINE</li>
+            <li>AND ALL GRAPHQL GOODIES
+                <ul style="margin-left: 30px">
+                    <li>DIRECTIVES</li>
+                    <li>SUBSCRIPTIONS</li>
+                    <li>AND EVERYTHING ELSE...</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- SLIDE #27 -->
+    <section class="slide">
+        <h2>RESOURCES</h2>
+        <ul>
+            <li>https://facebook.github.io/relay/</li>
+            <li>https://learnrelay.org/</li>
+            <li>https://facebook.github.io/relay/prototyping/playground.html#/</li>
+            <li>http://graphql.org/learn/</li>
+        </ul>
+    </section>
+
+    <!-- SLIDE #LAST -->
+    <section class="slide">
+        <h1 class="shout">THANKS FOR<br />LISTENING. QUESTIONS?</h1>
+    </section>
+
+    <div class="progress"></div>
+
+    <footer class="badge">
+        <a href="https://github.com/g3f4/declarative-ui-slides">Fork me on GitHub</a>
+    </footer>
+
+    <footer class="badge badge-down">
+        <a href="#" class="fullscreen">Fullscreen</a>
+    </footer>
+
+    <script src="vendors/gamepad/gamepad.js"></script>
+    <script src="vendors/shower/shower.min.js"></script>
+    <script src="vendors/shower-gamepad/shower.gamepad.js"></script>
+    <script src="modules/fullscreen.js"></script>
+
+    <!-- Prism.js -->
+    <script src="vendors/prism/prism.js"></script>
+    <script src="vendors/prism/custom-prism.js"></script>
+</body>
+</html>
